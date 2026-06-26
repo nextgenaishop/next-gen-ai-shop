@@ -62,24 +62,9 @@ async def start(message: Message):
         reply_markup=main_menu(),
     )
 
-
 @dp.message(F.text == "🛍 Products")
 async def show_products_message(message: Message):
     await message.answer("🛍 Available Products\n\nSelect a product:", reply_markup=products_keyboard())
-
-
-text = (
-    f"🖼️ Product: {p['name']}\n\n"
-    f"📝 Description:\n{p['desc']}\n\n"
-    f"💰 BDT Price: ৳{p['bdt']}\n"
-    f"💵 USDT Price: ${p['usdt']}\n"
-    f"📦 Stock: {p['stock']}"
-)
-
-await callback.message.edit_text(
-    text,
-    reply_markup=buy_keyboard(pid)
-)
 
 
 @dp.callback_query(F.data.startswith("product:"))
