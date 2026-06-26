@@ -170,6 +170,70 @@ async def receive_payment_info(message: Message):
     else:
         await message.answer("Please choose an option from the menu.", reply_markup=main_menu())
 
+from aiogram.fsm.state import State, StatesGroup
+from aiogram.fsm.context import FSMContext
+
+class AddProduct(StatesGroup):
+    id = State()
+    name = State()
+    bdt = State()
+    usdt = State()
+    stock = State()
+    desc = State()
+
+@dp.message(Command("addproduct"))
+async def add_product(message: Message, state: FSMContext):
+    if message.from_user.id != ADMIN_ID:
+        return
+
+    await state.set_state(AddProduct.id)
+    await message.answer("Product ID লিখুন (যেমন: p6)")
+    
+@dp.message(AddProduct.id)
+async def add_product_id(message: Message, state: FSMContext):
+    await state.update_data(id=message.text)
+    await state.set_state(AddProduct.name)
+    await message.answer("Product Name লিখুন:")
+    
+@dp.message(AddProduct.name)
+async def add_product_name(message: Message, state: FSMContext):
+    await state.update_data(name=message.text)
+    await state.set_state(AddProduct.bdt)
+    await message.answer("BDT Price লিখুন:")
+
+@dp.message(AddProduct.bdt)
+async def add_product_bdt(message: Message, state: FSMContext):
+    await state.update_data(bdt=message.text)
+    await state.set_state(AddProduct.usdt)
+    await message.answer("USDT Price লিখুন:")
+
+@dp.message(AddProduct.usdt)
+async def add_product_usdt(message: Message, state: FSMContext):
+    await state.update_data(usdt=message.text)
+    await state.set_state(AddProduct.stock)
+    await message.answer("Stock লিখুন:")
+
+@dp.message(AddProduct.stock)
+async def add_product_stock(message: Message, state: FSMContext):
+    await state.update_data(stock=message.text)
+    await state.set_state(AddProduct.desc)
+    await message.answer("Description লিখুন:")
+
+@dp.message(AddProduct.desc)
+async def add_product_desc(message: Message, state: FSMContext):
+    data = await state.get_data()
+
+    products[data["id"]] = {
+        "name": data["name"],
+        "bdt": data["bdt"],
+        "usdt": data["usdt"],
+        "stock": data["stock"],
+        "desc": message.text,
+    }
+
+    await state.clear()
+    await message.answer("✅ Product Successfully Added!")
+
 
 async def main():
     await dp.start_polling(bot)
