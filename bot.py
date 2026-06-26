@@ -159,7 +159,7 @@ async def stock(message: Message):
         await message.answer(f"🚨 Stock Alert!\n━━━━━━━━━━━━━━\n\n🔥 New keys have been added for: {p['name']}\n\n🎁 Available Stock: {p['stock']}\n⚡ Hurry up and grab yours now before it runs out!", reply_markup=InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="🛒 Buy Now", callback_data="products")]]))
 
 
-@dp.message()
+@dp.message(F.photo)
 async def receive_payment_info(message: Message):
     pid = user_orders.get(message.from_user.id)
     if pid:
