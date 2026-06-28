@@ -169,22 +169,52 @@ async def show_product(callback: CallbackQuery):
 @dp.callback_query(F.data.startswith("buy:"))
 async def buy_product(callback: CallbackQuery):
     pid = callback.data.split(":", 1)[1]
-    p = products[pid]
-    user_orders[callback.from_user.id] = pid
-    text = (
-        f"✅ Order Started\n\n"
-        f"Product: {p['name']}\n"
-        f"Price: ৳{p['bdt']} / {p['usdt']} USDT\n\n"
-        f"💳 Payment Options\n\n"
-        f"🌍 International:\nBinance Pay ID: {BINANCE_PAY_ID}\n\n"
-        f"🇧🇩 Bangladesh:\nbKash: {BKASH}\nNagad: {NAGAD}\n\n"
-        f"Payment complete করার পর Transaction ID বা Screenshot পাঠান।\n\n"
-        f"🎧 Support: {SUPPORT}"
+
+    user_orders[callback.from_user.id] = {
+        "product": pid,
+        "step": "quantity"
+    }
+
+    await callback.message.answer(
+        f"✏️ Enter quantity to buy (1-{products[pid]['stock']}):"
     )
-    await callback.message.answer(text)
-    if ADMIN_ID:
-        await bot.send_message(ADMIN_ID, f"🆕 New Order\n\nUser ID: {callback.from_user.id}\nUsername: @{callback.from_user.username}\nProduct: {p['name']}\nPrice: ৳{p['bdt']} / {p['usdt']} USDT")
+
     await callback.answer()
+
+
+@dp.message(lambda message: message.from_user.id in user_orders and user_orders[message.from_user.id].get("step") == "quantity")
+async def process_quantity(message: Message):
+    if not message.text.isdigit():
+        await message.answer("❌ Please enter a valid number.")
+        return
+
+    qty = int(message.text)
+
+    pid = user_orders[message.from_user.id]["product"]
+    p = products[pid]
+
+    if qty < 1 or qty > int(p["stock"]):
+        await message.answer(f"❌ Quantity must be between 1 and {p['stock']}.")
+        return
+
+    total_bdt = qty * int(p["bdt"])
+    total_usdt = qty * float(str(p["usdt"]).replace("$", ""))
+
+    user_orders.pop(message.from_user.id)
+
+    await message.answer(
+        f"📦 Order Summary\n\n"
+        f"Product: {p['name']}\n"
+        f"Quantity: {qty}\n\n"
+        f"💰 Total: ৳{total_bdt}\n"
+        f"💵 Total USDT: ${total_usdt}\n\n"
+        f"Choose payment method:\n\n"
+        f"💳 Wallet\n"
+        f"🟡 Binance Pay\n"
+        f"💵 USDT (BEP20)\n"
+        f"📱 bKash\n"
+        f"📱 Nagad"
+    )
 
 
 @dp.message(F.text == "🎧 Support")
