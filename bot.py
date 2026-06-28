@@ -23,14 +23,14 @@ products = {
     "name": "ChatGPT K12 - 2 Years",
     "bdt": "1650",
     "usdt": "$14",
-    "stock": "38 accounts",
+    "stock": 20,
     "image": "https://raw.githubusercontent.com/nextgenaishop/next-gen-ai-shop/main/IMG_20260628_103606_618.jpg",
     "desc": """🤖 CDK (K12) FOR SINGLE
 ━━━━━━━━━━━━━━
 
 💵 Price: $14.00
-➕ Stock: 38 accounts
-↗️ Sold: 535 accounts
+➕ Stock: 20 accounts
+↗️ Sold: 350 accounts
 
 Description:
 
@@ -68,7 +68,7 @@ This product is sold with NO WARRANTY."""
         "name": "Canva Pro - 1 Month",
         "bdt": "500",
         "usdt": "$4",
-        "stock": "Available",
+        "stock": 20,
         "desc": "Canva Pro access. Instant delivery after payment verification.",
         "image": ""
     },
@@ -77,7 +77,7 @@ This product is sold with NO WARRANTY."""
         "name": "Super Grok - 1 Month 25 Days",
         "bdt": "820",
         "usdt": "$7.5",
-        "stock": "Available",
+        "stock": "10",
         "desc": "Super Grok subscription. Instant delivery after payment verification.",
         "image": ""
     },
@@ -86,7 +86,7 @@ This product is sold with NO WARRANTY."""
         "name": "ChatGPT Plus Official - 1 Month",
         "bdt": "530",
         "usdt": "4.5",
-        "stock": "Available",
+        "stock": "10",
         "desc": "ChatGPT Plus official subscription. Instant delivery after payment verification.",
         "image": "https://raw.githubusercontent.com/nextgenaishop/next-gen-ai-shop/main/IMG_20260628_103606_618.jpg"
     },
@@ -95,7 +95,7 @@ This product is sold with NO WARRANTY."""
         "name": "ElevenLabs - 1 Month + 15 Days Warranty",
         "bdt": "1250",
         "usdt": "10",
-        "stock": "Available",
+        "stock": "5",
         "desc": "ElevenLabs subscription with 15 days warranty. Instant delivery after payment verification.",
         "image": ""
     }
