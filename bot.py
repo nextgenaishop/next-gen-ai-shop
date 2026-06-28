@@ -93,7 +93,7 @@ async def show_product(callback: CallbackQuery):
         f"ℹ️ {p['desc']}"
     )
 
-if p.get("image"):
+    if p.get("image"):
     
     await callback.message.answer_photo(
         photo=p["image"],
