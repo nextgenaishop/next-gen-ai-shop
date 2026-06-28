@@ -18,7 +18,6 @@ SUPPORT = "@digitalproduct786"
 BINANCE_PAY_ID = "486825563"
 BKASH = "01619431937"
 NAGAD = "01619431937"
-
 products = {
 "p1": {
     "name": "ChatGPT K12 - 2 Years",
@@ -70,7 +69,7 @@ This product is sold with NO WARRANTY."""
         "bdt": "500",
         "usdt": "$4",
         "stock": "Available",
-        "desc": "Canva Pro access. Manual delivery after payment verification.",
+        "desc": "Canva Pro access. Instant delivery after payment verification.",
         "image": ""
     },
 
@@ -79,7 +78,7 @@ This product is sold with NO WARRANTY."""
         "bdt": "820",
         "usdt": "$7.5",
         "stock": "Available",
-        "desc": "Super Grok subscription. Manual delivery after payment verification.",
+        "desc": "Super Grok subscription. Instant delivery after payment verification.",
         "image": ""
     },
 
@@ -88,7 +87,7 @@ This product is sold with NO WARRANTY."""
         "bdt": "530",
         "usdt": "4.5",
         "stock": "Available",
-        "desc": "ChatGPT Plus official subscription. Manual delivery after payment verification.",
+        "desc": "ChatGPT Plus official subscription. Instant delivery after payment verification.",
         "image": "https://raw.githubusercontent.com/nextgenaishop/next-gen-ai-shop/main/IMG_20260628_103606_618.jpg"
     },
 
@@ -97,7 +96,7 @@ This product is sold with NO WARRANTY."""
         "bdt": "1250",
         "usdt": "10",
         "stock": "Available",
-        "desc": "ElevenLabs subscription with 15 days warranty. Manual delivery after payment verification.",
+        "desc": "ElevenLabs subscription with 15 days warranty. Instant delivery after payment verification.",
         "image": ""
     }
 }
