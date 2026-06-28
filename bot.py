@@ -102,7 +102,7 @@ This product is sold with NO WARRANTY."""
 }
 
 user_orders = {}
-
+user_wallets = {}
 
 def main_menu():
     return ReplyKeyboardMarkup(
