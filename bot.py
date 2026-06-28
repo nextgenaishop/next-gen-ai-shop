@@ -232,17 +232,15 @@ async def process_quantity(message: Message):
         reply_markup=kb
     )
 
-@dp.callback_query(F.data == "pay_binance")
-async def pay_binance(callback: CallbackQuery):
+@dp.callback_query(F.data == "pay_wallet")
+async def pay_wallet(callback: CallbackQuery):
+    balance = user_wallets.get(callback.from_user.id, 0.0)
 
     text = (
-        "🟡 Binance Pay\n\n"
-        "━━━━━━━━━━━━━━\n"
-        "💳 Binance Pay ID\n"
-        f"{BINANCE_PAY_ID}\n\n"
-        "✅ Send the exact payment amount.\n"
-        "✅ After payment, send your payment screenshot.\n\n"
-        f"🎧 Support: {SUPPORT}"
+        f"💳 Wallet\n\n"
+        f"💵 USDT Balance: ${balance:.2f}\n\n"
+        f"⚠️ Your balance is not enough.\n"
+        f"Please recharge your wallet using Binance Pay."
     )
 
     await callback.message.answer(text)
