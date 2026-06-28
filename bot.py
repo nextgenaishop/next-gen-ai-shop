@@ -20,15 +20,51 @@ BKASH = "01619431937"
 NAGAD = "01619431937"
 
 products = {
-    "p1": {
-        "name": "ChatGPT K12 - 2 Years",
-        "bdt": "1650",
-        "usdt": "$14",
-        "stock": "10",
-        "desc": "Premium AI subscription. Manual delivery after payment verification.",
-        "image": "https://raw.githubusercontent.com/nextgenaishop/next-gen-ai-shop/main/IMG_20260628_103606_618.jpg"
-    },
+"p1": {
+    "name": "ChatGPT K12 - 2 Years",
+    "bdt": "1650",
+    "usdt": "$14",
+    "stock": "38 accounts",
+    "image": "https://raw.githubusercontent.com/nextgenaishop/next-gen-ai-shop/main/IMG_20260628_103606_618.jpg",
+    "desc": """🤖 CDK (K12) FOR SINGLE
+━━━━━━━━━━━━━━
 
+💵 Price: $14.00
+➕ Stock: 38 accounts
+↗️ Sold: 535 accounts
+
+Description:
+
+✅ ChatGPT K12 Edu 2-year package.
+Full of latest languages like Plus.
+
+✅ Can activate any account owner.
+
+⚠️ Applies to Gmail ONLY.
+(We are not responsible if you use other emails.)
+
+✅ After ordering, you will receive a code.
+
+✅ Account is on free plan.
+
+✅ Recommended to use an account without an active subscription or a newly created account to register.
+
+🌐 Web upgrade CDK:
+https://oaiteam.azx.us/
+
+Step 1:
+Get https://chatgpt.com/api/auth/session
+Paste into JSON.
+
+Step 2:
+Paste the CDK.
+
+Step 3:
+Upgrade.
+
+⚠️ NOTE:
+This product is sold with NO WARRANTY."""
+},
     "p2": {
         "name": "Canva Pro - 1 Month",
         "bdt": "500",
