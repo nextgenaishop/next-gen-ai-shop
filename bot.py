@@ -21,25 +21,49 @@ NAGAD = "01619431937"
 
 products = {
     "p1": {
-    "name": "ChatGPT K12 - 2 Years",
-    "bdt": "1650",
-    "usdt": "$14",
-    "stock": "10",
-    "desc": "Premium AI subscription. Manual delivery after payment verification.",
-    "image": "https://raw.githubusercontent.com/nextgenaishop/next-gen-ai-shop/main/IMG_20260628_103606_618.jpg"
-},
-    "p2": {"name": "Canva Pro - 1 Month", "bdt": "500", "usdt": "$4", "stock": "Available", "desc": "Canva Pro access. Manual delivery after payment verification."},"image": "",
-    "p3": {"name": "Super Grok - 1 Month 25 Days", "bdt": "820", "usdt": "$7.5", "stock": "Available", "desc": "Super Grok subscription. Manual delivery after payment verification."},"image": "",
+        "name": "ChatGPT K12 - 2 Years",
+        "bdt": "1650",
+        "usdt": "$14",
+        "stock": "10",
+        "desc": "Premium AI subscription. Manual delivery after payment verification.",
+        "image": "https://raw.githubusercontent.com/nextgenaishop/next-gen-ai-shop/main/IMG_20260628_103606_618.jpg"
+    },
+
+    "p2": {
+        "name": "Canva Pro - 1 Month",
+        "bdt": "500",
+        "usdt": "$4",
+        "stock": "Available",
+        "desc": "Canva Pro access. Manual delivery after payment verification.",
+        "image": ""
+    },
+
+    "p3": {
+        "name": "Super Grok - 1 Month 25 Days",
+        "bdt": "820",
+        "usdt": "$7.5",
+        "stock": "Available",
+        "desc": "Super Grok subscription. Manual delivery after payment verification.",
+        "image": ""
+    },
+
     "p4": {
-    "name": "ChatGPT Plus Official - 1 Month",
-    "bdt": "530",
-    "usdt": "4.5",
-    "stock": "Available",
-    "desc": "ChatGPT Plus official subscription. Manual delivery after payment verification.",
-    "image": "https://raw.githubusercontent.com/nextgenaishop/next-gen-ai-shop/main/IMG_20260628_103606_618.jpg"
-},
-    
-    "p5": {"name": "ElevenLabs - 1 Month + 15 Days Warranty", "bdt": "1250", "usdt": "10", "stock": "Available", "desc": "ElevenLabs subscription with 15 days warranty. Manual delivery after payment verification."},"image": "",
+        "name": "ChatGPT Plus Official - 1 Month",
+        "bdt": "530",
+        "usdt": "4.5",
+        "stock": "Available",
+        "desc": "ChatGPT Plus official subscription. Manual delivery after payment verification.",
+        "image": "https://raw.githubusercontent.com/nextgenaishop/next-gen-ai-shop/main/IMG_20260628_103606_618.jpg"
+    },
+
+    "p5": {
+        "name": "ElevenLabs - 1 Month + 15 Days Warranty",
+        "bdt": "1250",
+        "usdt": "10",
+        "stock": "Available",
+        "desc": "ElevenLabs subscription with 15 days warranty. Manual delivery after payment verification.",
+        "image": ""
+    }
 }
 
 user_orders = {}
