@@ -81,11 +81,11 @@ async def start(message: Message):
 async def show_products_message(message: Message):
     await message.answer("🛍 Available Products\n\nSelect a product:", reply_markup=products_keyboard())
 
-
 @dp.callback_query(F.data.startswith("product:"))
 async def show_product(callback: CallbackQuery):
     pid = callback.data.split(":", 1)[1]
     p = products[pid]
+
     text = (
         f"📦 {p['name']}\n\n"
         f"💰 Price: ৳{p['bdt']} / {p['usdt']} USDT\n"
@@ -94,19 +94,18 @@ async def show_product(callback: CallbackQuery):
     )
 
     if p.get("image"):
-    
-    await callback.message.answer_photo(
-        photo=p["image"],
-        caption=text,
-        reply_markup=buy_keyboard(pid)
-    )
-else:
-    
-    await callback.message.answer(
-        text,
-        reply_markup=buy_keyboard(pid)
-    )
-await callback.answer()
+        await callback.message.answer_photo(
+            photo=p["image"],
+            caption=text,
+            reply_markup=buy_keyboard(pid)
+        )
+    else:
+        await callback.message.answer(
+            text,
+            reply_markup=buy_keyboard(pid)
+        )
+
+    await callback.answer()
 
 @dp.callback_query(F.data.startswith("buy:"))
 async def buy_product(callback: CallbackQuery):
