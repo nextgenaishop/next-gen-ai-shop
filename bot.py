@@ -131,6 +131,8 @@ def buy_keyboard(pid):
 
 @dp.message(CommandStart())
 async def start(message: Message):
+    if message.from_user.id not in user_wallets:
+    user_wallets[message.from_user.id] = 0.0
     await message.answer(
         f"🤖 Welcome to {STORE_NAME}\n\nPremium AI tools & online subscriptions are available here.\n\nPlease choose an option from the menu below 👇",
         reply_markup=main_menu(),
@@ -250,8 +252,16 @@ async def support(message: Message):
 
 @dp.message(F.text == "💰 Wallet")
 async def wallet(message: Message):
-    await message.answer(f"💰 Wallet\n\nCurrent Balance: ৳0\n\nWallet recharge করতে চাইলে payment করুন:\nBinance Pay ID: {BINANCE_PAY_ID}\nbKash/Nagad: {BKASH}\n\nPayment করার পর screenshot পাঠান।")
 
+    balance = user_wallets.get(message.from_user.id, 0.0)
+
+    await message.answer(
+        f"💰 Wallet\n\n"
+        f"💵 USDT Balance: ${balance:.2f}\n\n"
+        f"🟡 Recharge your wallet using Binance Pay.\n"
+        f"After payment, send the payment screenshot to admin.\n\n"
+        f"🆔 Binance Pay ID: {BINANCE_PAY_ID}"
+    )
 
 @dp.message(F.text == "🎁 Share & Earn")
 async def share(message: Message):
