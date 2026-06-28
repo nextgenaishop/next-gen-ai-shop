@@ -182,8 +182,15 @@ async def buy_product(callback: CallbackQuery):
     await callback.answer()
 
 
-@dp.message(lambda message: message.from_user.id in user_orders and user_orders[message.from_user.id].get("step") == "quantity")
+    @dp.message()
 async def process_quantity(message: Message):
+
+    if message.from_user.id not in user_orders:
+        return
+
+    if user_orders[message.from_user.id].get("step") != "quantity":
+        return
+
     if not message.text.isdigit():
         await message.answer("❌ Please enter a valid number.")
         return
