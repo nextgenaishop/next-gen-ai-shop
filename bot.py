@@ -255,15 +255,23 @@ async def support(message: Message):
 async def wallet(message: Message):
 
     balance = user_wallets.get(message.from_user.id, 0.0)
-kb = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text="➕ Deposit USDT", callback_data="deposit_usdt")]
-])
+
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(
+                text="➕ Deposit USDT",
+                callback_data="deposit_usdt"
+            )]
+        ]
+    )
+
     await message.answer(
         f"💰 Wallet\n\n"
         f"💵 USDT Balance: ${balance:.2f}\n\n"
         f"🟡 Recharge your wallet using Binance Pay.\n"
-        f"After payment, send the payment screenshot to admin.\n\n"
-        f"🆔 Binance Pay ID: {BINANCE_PAY_ID}"
+        f"📷 After payment, send the payment screenshot to admin.\n\n"
+        f"🆔 Binance Pay ID: {BINANCE_PAY_ID}",
+        reply_markup=kb
     )
 
 @dp.message(F.text == "🎁 Share & Earn")
