@@ -182,7 +182,7 @@ async def buy_product(callback: CallbackQuery):
     await callback.answer()
 
 
-    @dp.message()
+@dp.message()
 async def process_quantity(message: Message):
 
     if message.from_user.id not in user_orders:
