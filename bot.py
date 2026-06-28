@@ -255,7 +255,9 @@ async def support(message: Message):
 async def wallet(message: Message):
 
     balance = user_wallets.get(message.from_user.id, 0.0)
-
+kb = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="➕ Deposit USDT", callback_data="deposit_usdt")]
+])
     await message.answer(
         f"💰 Wallet\n\n"
         f"💵 USDT Balance: ${balance:.2f}\n\n"
