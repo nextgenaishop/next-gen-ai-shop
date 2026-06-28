@@ -227,6 +227,21 @@ async def process_quantity(message: Message):
         reply_markup=kb
     )
 
+@dp.callback_query(F.data == "pay_binance")
+async def pay_binance(callback: CallbackQuery):
+
+    text = (
+        "🟡 Binance Pay\n\n"
+        "━━━━━━━━━━━━━━\n"
+        "💳 Binance Pay ID\n"
+        f"{BINANCE_PAY_ID}\n\n"
+        "✅ Send the exact payment amount.\n"
+        "✅ After payment, send your payment screenshot.\n\n"
+        f"🎧 Support: {SUPPORT}"
+    )
+
+    await callback.message.answer(text)
+    await callback.answer()
 
 @dp.message(F.text == "🎧 Support")
 async def support(message: Message):
