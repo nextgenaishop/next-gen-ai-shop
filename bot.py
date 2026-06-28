@@ -209,18 +209,22 @@ async def process_quantity(message: Message):
 
     user_orders.pop(message.from_user.id)
 
+    kb = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="🟡 Binance Pay", callback_data="pay_binance")],
+        [InlineKeyboardButton(text="💳 Wallet", callback_data="pay_wallet")],
+        [InlineKeyboardButton(text="💵 USDT (BEP20)", callback_data="pay_usdt")],
+        [InlineKeyboardButton(text="📱 bKash", callback_data="pay_bkash")],
+        [InlineKeyboardButton(text="📱 Nagad", callback_data="pay_nagad")]
+    ])
+
     await message.answer(
         f"📦 Order Summary\n\n"
         f"Product: {p['name']}\n"
         f"Quantity: {qty}\n\n"
         f"💰 Total: ৳{total_bdt}\n"
         f"💵 Total USDT: ${total_usdt}\n\n"
-        f"Choose payment method:\n\n"
-        f"💳 Wallet\n"
-        f"🟡 Binance Pay\n"
-        f"💵 USDT (BEP20)\n"
-        f"📱 bKash\n"
-        f"📱 Nagad"
+        f"Choose payment method:",
+        reply_markup=kb
     )
 
 
