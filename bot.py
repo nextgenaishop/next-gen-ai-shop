@@ -132,12 +132,15 @@ def buy_keyboard(pid):
 @dp.message(CommandStart())
 async def start(message: Message):
     if message.from_user.id not in user_wallets:
-    user_wallets[message.from_user.id] = 0.0
+        user_wallets[message.from_user.id] = 0.0
+
     await message.answer(
-        f"🤖 Welcome to {STORE_NAME}\n\nPremium AI tools & online subscriptions are available here.\n\nPlease choose an option from the menu below 👇",
+        f"🤖 Welcome to {STORE_NAME}\n\n"
+        f"Premium AI tools & online subscriptions are available here.\n\n"
+        f"Please choose an option from the menu below 👇",
         reply_markup=main_menu(),
     )
-
+    
 @dp.message(F.text == "🛍 Products")
 async def show_products_message(message: Message):
     await message.answer("🛍 Available Products\n\nSelect a product:", reply_markup=products_keyboard())
