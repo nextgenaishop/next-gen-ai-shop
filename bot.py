@@ -84,9 +84,21 @@ async def show_product(callback: CallbackQuery):
         f"🎁 Stock: {p['stock']}\n\n"
         f"ℹ️ {p['desc']}"
     )
-    await callback.message.edit_text(text, reply_markup=buy_keyboard(pid))
-    await callback.answer()
 
+if p.get("image"):
+    
+    await callback.message.answer_photo(
+        photo=p["image"],
+        caption=text,
+        reply_markup=buy_keyboard(pid)
+    )
+else:
+    
+    await callback.message.answer(
+        text,
+        reply_markup=buy_keyboard(pid)
+    )
+await callback.answer()
 
 @dp.callback_query(F.data.startswith("buy:"))
 async def buy_product(callback: CallbackQuery):
