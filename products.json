@@ -6,7 +6,8 @@
       "price_bdt": 1650,
       "price_usdt": 14,
       "stock": 10,
-      "description": "Premium AI subscription. Manual delivery after payment verification."
+      "description": "Premium AI subscription. Manual delivery after payment verification.",
+"image": "https://raw.githubusercontent.com/nextgenaishop/next-gen-ai-shop/main/IMG_20260628_103606_618.jpg"
     },
     {
       "id": "p2",
