@@ -272,7 +272,7 @@ async def pay_binance(callback: CallbackQuery):
     await callback.message.answer(text, reply_markup=kb)
     await callback.answer()
     
-    @dp.callback_query(F.data == "paid_binance")
+@dp.callback_query(F.data == "paid_binance")
 async def paid_binance(callback: CallbackQuery):
     await callback.message.answer(
         "📸 Please send your payment screenshot or Transaction ID.\n\n"
