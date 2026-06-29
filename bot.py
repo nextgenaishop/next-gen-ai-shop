@@ -74,9 +74,9 @@ This product is sold with NO WARRANTY."""
     },
 
     "p3": {
-        "name": "Super Grok - 1 Month 25 Days",
-        "bdt": "820",
-        "usdt": "$7.5",
+        "name": "Super Grok - 3 Month Full Warranty",
+        "bdt": "2280",
+        "usdt": "$18",
         "stock": "10",
         "desc": "Super Grok subscription. Instant delivery after payment verification.",
         "image": ""
