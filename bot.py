@@ -91,7 +91,7 @@ This product is sold with NO WARRANTY."""
         "image": "https://raw.githubusercontent.com/nextgenaishop/next-gen-ai-shop/main/IMG_20260628_103606_618.jpg"
     },
     "p5": {
-        "name": "Capcut Pro 28 Days- 1 Month Full Warranty",
+        "name": "Capcut Pro 28 Days- Full warranty",
         "bdt": "420",
         "usdt": "$3.00",
         "stock": "70",
