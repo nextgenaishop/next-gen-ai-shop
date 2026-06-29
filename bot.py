@@ -242,33 +242,34 @@ async def process_quantity(message: Message):
 
 @dp.callback_query(F.data == "pay_binance")
 async def pay_binance(callback: CallbackQuery):
+    pid = user_orders.get(callback.from_user.id, {}).get("product")
+    qty = user_orders.get(callback.from_user.id, {}).get("qty", 1)
+
+    if pid and pid in products:
+        usdt = float(str(products[pid]["usdt"]).replace("$", "")) * qty
+    else:
+        usdt = 0
+
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="✅ I Have Paid",
+                    callback_data="paid_binance"
+                )
+            ]
+        ]
+    )
 
     text = (
         f"🟡 Binance Pay\n\n"
         f"🆔 Binance Pay ID:\n"
         f"{BINANCE_PAY_ID}\n\n"
-        f"✅ Send the exact payment amount.\n"
-        f"📷 After payment, send your payment screenshot to admin.\n\n"
-        f"🎧 Support: {SUPPORT}"
+        f"💵 Amount to Pay: ${usdt:.2f} USDT\n\n"
+        f"⚠️ Send the exact payment amount."
     )
 
-    await callback.message.answer(text)
-    await callback.answer()
-
-
-@dp.callback_query(F.data == "pay_wallet")
-async def pay_wallet(callback: CallbackQuery):
-
-    balance = user_wallets.get(callback.from_user.id, 0.0)
-
-    text = (
-        f"💳 Wallet\n\n"
-        f"💵 USDT Balance: ${balance:.2f}\n\n"
-        f"⚠️ Your balance is not enough.\n"
-        f"Please recharge your wallet using Binance Pay."
-    )
-
-    await callback.message.answer(text)
+    await callback.message.answer(text, reply_markup=kb)
     await callback.answer()
 
 @dp.message(F.text == "🎧 Support")
