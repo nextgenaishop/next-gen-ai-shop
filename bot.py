@@ -278,7 +278,7 @@ async def paid_binance(callback: CallbackQuery):
         f"📸 Please send your payment screenshot or Transaction ID.\n\n"
         f"👤 Admin: {SUPPORT}\n\n"
         f"⚠️ Send your payment proof directly to the admin above.\n"
-        f"After verification, your order will be processed manually."
+        f"After verification, your order will be processed ."
     )
     await callback.answer()
 
