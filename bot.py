@@ -18,7 +18,7 @@ SUPPORT = "@digitalproduct786"
 BINANCE_PAY_ID = "486825563"
 BKASH = "01619431937"
 NAGAD = "01619431937"
-products = {
+products = {   
 "p1": {
     "name": "ChatGPT K12 - 2 Years",
     "bdt": "1650",
@@ -90,8 +90,16 @@ This product is sold with NO WARRANTY."""
         "desc": "ChatGPT Plus official subscription. Instant delivery after payment verification.",
         "image": "https://raw.githubusercontent.com/nextgenaishop/next-gen-ai-shop/main/IMG_20260628_103606_618.jpg"
     },
-
     "p5": {
+        "name": "Capcut Pro 28 Days- 1 Month Full Warranty",
+        "bdt": "420",
+        "usdt": "$3.00",
+        "stock": "70",
+        "desc": "Capcut Pro subscription. Instant delivery after payment verification.",
+        "image": ""
+    },
+
+    "p6": {
         "name": "ElevenLabs - 1 Month + 15 Days Warranty",
         "bdt": "1250",
         "usdt": "10",
