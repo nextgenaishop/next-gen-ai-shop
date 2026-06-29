@@ -271,12 +271,14 @@ async def pay_binance(callback: CallbackQuery):
 
     await callback.message.answer(text, reply_markup=kb)
     await callback.answer()
-    
+
 @dp.callback_query(F.data == "paid_binance")
 async def paid_binance(callback: CallbackQuery):
     await callback.message.answer(
-        "📸 Please send your payment screenshot or Transaction ID.\n\n"
-        "After verification, your order will be processed manually."
+        f"📸 Please send your payment screenshot or Transaction ID.\n\n"
+        f"👤 Admin: {SUPPORT}\n\n"
+        f"⚠️ Send your payment proof directly to the admin above.\n"
+        f"After verification, your order will be processed manually."
     )
     await callback.answer()
 
