@@ -221,7 +221,6 @@ total_bdt = qty * int(p["bdt"])
 total_usdt = qty * float(str(p["usdt"]).replace("$", ""))
 
     kb = InlineKeyboardMarkup(
-
         [InlineKeyboardButton(text="🟡 Binance Pay", callback_data="pay_binance")],
         [InlineKeyboardButton(text="💳 Wallet", callback_data="pay_wallet")],
         [InlineKeyboardButton(text="💵 USDT (BEP20)", callback_data="pay_usdt")],
