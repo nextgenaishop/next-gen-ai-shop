@@ -218,7 +218,9 @@ async def process_quantity(message: Message):
         return
 
 total_bdt = qty * int(p["bdt"])
-total_usdt = qty * float(str(p["usdt"]).replace("$", ""))
+    total_usdt = qty * float(str(p["usdt"]).replace("$", ""))
+
+    kb = InlineKeyboardMarkup(
 
     kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="🟡 Binance Pay", callback_data="pay_binance")],
