@@ -216,10 +216,10 @@ async def process_quantity(message: Message):
         await message.answer(f"❌ Quantity must be between 1 and {p['stock']}.")
         return
 
-    total_bdt = qty * int(p["bdt"])
-    total_usdt = qty * float(str(p["usdt"]).replace("$", ""))
+total_bdt = qty * int(p["bdt"])
+total_usdt = qty * float(str(p["usdt"]).replace("$", ""))
 
-    user_orders.pop(message.from_user.id)
+kb = InlineKeyboardMarkup(
 
     kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="🟡 Binance Pay", callback_data="pay_binance")],
