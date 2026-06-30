@@ -194,6 +194,7 @@ async def buy_product(callback: CallbackQuery):
 
     await callback.answer()
 
+
 @dp.message(F.text.regexp(r"^\d+$"))
 async def process_quantity(message: Message):
 
@@ -236,7 +237,6 @@ total_usdt = qty * float(str(p["usdt"]).replace("$", ""))
         f"Choose payment method:",
         reply_markup=kb
     )
-
 @dp.callback_query(F.data == "pay_binance")
 async def pay_binance(callback: CallbackQuery):
     pid = user_orders.get(callback.from_user.id, {}).get("product")
