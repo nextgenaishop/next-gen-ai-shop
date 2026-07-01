@@ -214,29 +214,37 @@ async def process_quantity(message: Message):
     p = products[pid]
 
     if qty < 1 or qty > int(p["stock"]):
-        await message.answer(f"❌ Quantity must be between 1 and {p['stock']}.")
+        await message.answer(
+            f"❌ Quantity must be between 1 and {p['stock']}."
+        )
         return
 
-total_bdt = qty * int(p["bdt"])
-total_usdt = qty * float(str(p["usdt"]).replace("$", ""))
+    total_bdt = qty * int(p["bdt"])
+    total_usdt = qty * float(str(p["usdt"]).replace("$", ""))
+
+    # Save quantity for payment
+    user_orders[message.from_user.id]["qty"] = qty
 
     kb = InlineKeyboardMarkup(
-        [InlineKeyboardButton(text="🟡 Binance Pay", callback_data="pay_binance")],
-        [InlineKeyboardButton(text="💳 Wallet", callback_data="pay_wallet")],
-        [InlineKeyboardButton(text="💵 USDT (BEP20)", callback_data="pay_usdt")],
-        [InlineKeyboardButton(text="📱 bKash", callback_data="pay_bkash")],
-        [InlineKeyboardButton(text="📱 Nagad", callback_data="pay_nagad")]
-    ])
+        inline_keyboard=[
+            [InlineKeyboardButton(text="🟡 Binance Pay", callback_data="pay_binance")],
+            [InlineKeyboardButton(text="💳 Wallet", callback_data="pay_wallet")],
+            [InlineKeyboardButton(text="💵 USDT (BEP20)", callback_data="pay_usdt")],
+            [InlineKeyboardButton(text="📱 bKash", callback_data="pay_bkash")],
+            [InlineKeyboardButton(text="📱 Nagad", callback_data="pay_nagad")]
+        ]
+    )
 
     await message.answer(
         f"📦 Order Summary\n\n"
         f"Product: {p['name']}\n"
         f"Quantity: {qty}\n\n"
         f"💰 Total: ৳{total_bdt}\n"
-        f"💵 Total USDT: ${total_usdt}\n\n"
+        f"💵 Total USDT: ${total_usdt:.2f}\n\n"
         f"Choose payment method:",
         reply_markup=kb
     )
+    
 @dp.callback_query(F.data == "pay_binance")
 async def pay_binance(callback: CallbackQuery):
     pid = user_orders.get(callback.from_user.id, {}).get("product")
